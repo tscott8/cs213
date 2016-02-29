@@ -1,0 +1,49 @@
+html{
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: linear-gradient(#030,#090,#0C6);
+	background-repeat: no-repeat;
+	background-color: #00CC66;
+	font-family: verdana;
+	font-weight: bold;
+}
+#calculator{
+	margin: 10%;
+	min-width: 50%;
+}
+#calculator table {
+	background-color: Lavender;
+	border-style: ridge;
+	border-width: 10px;
+	border-color: DimGray;
+	border-radius: 	10px;
+}
+#calculator form {
+	line-height: 30px;
+}
+#calculator form input{
+	text-align: right;
+}	
+#calculator form table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+#calculator form table tr td{
+	padding: 15px;
+	text-align: right;
+}
+
+#footer footer{
+	background-color:transparent;
+	position: fixed; 
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	padding: .25%;
+	text-align:center; 	 
+	max-height: 15px;
+	line-height: 15px;
+}

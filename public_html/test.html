@@ -1,0 +1,27 @@
+<form action="POST" name="myform"> <table border="1" bgcolor="#63639C"> 
+	<tbody><tr> <td align="center" colspan="2"> <script language="JavaScript"><!--
+		function Morgcal()
+		{
+			form = document.myform
+			LoanAmount= form.LoanAmount.value
+			
+			DownPayment= "0"
+			AnnualInterestRate = form.InterestRate.value/100
+			Years= form.NumberOfYears.value
+			MonthRate=AnnualInterestRate/12
+			NumPayments=Years*12
+			Prin=LoanAmount-DownPayment
+			
+			MonthPayment=Math.floor((Prin*MonthRate)/(1-Math.pow((1+MonthRate),(-1*NumPayments)))*100)/100
+			form.NumberOfPayments.value=NumPayments
+			form.MonthlyPayment.value=MonthPayment
+		}
+		// --></script> <font color="#FFFFFF" size="2" face="arial narrow"><b>Repayment Mortgage Calculator</b> 
+		<br> Enter Your Details &amp; Click the Calculate Button</font></td></tr> <tr> 
+		<td> <table border="0" cellpadding="2"> <tbody><tr> <td align="right"><font color="#FFFFFF" size="2" face="arial narrow">Loan Amount $ </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="text" size="10" name="LoanAmount" value="80000" onblur="Morgcal()" onchange="Morgcal()" style="cursor: pointer; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;"> <br> </font></td></tr> 
+		<tr> <td align="right"><font color="#FFFFFF" size="2" face="arial narrow">Annual Interest Rate </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="text" size="3" name="InterestRate" value="6.0" onblur="Morgcal()" onchange="Morgcal()"> % <br> </font></td></tr> 
+		<tr> <td align="right"><font color="#FFFFFF" size="2" face="arial narrow">Term of Loan </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="text" size="3" name="NumberOfYears" value="20" onblur="Morgcal()" onchange="Morgcal()"> Years<br> </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="button" name="morgcal" value="Calculate" language="JavaScript" onclick="Morgcal()"> </font></td></tr> 
+		<tr> <td colspan="3"><font color="#FFFFFF"></font></td></tr> </tbody></table></td></tr> 
+		<tr> <td> <table border="0" cellpadding="2"> <tbody><tr> <td align="right"><font color="#FFFFFF" size="2" face="arial narrow"> Number of Payments </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="text" size="7" name="NumberOfPayments"> <br> </font></td></tr> <tr> 
+		<td align="right"><font color="#FFFFFF" size="2" face="arial narrow">Monthly Payment $ </font></td><td><font color="#FFFFFF" size="2" face="arial narrow"> <input type="text" size="7" name="MonthlyPayment"> <br> </font></td></tr> <tr> 
+		<td align="center" colspan="2">&nbsp;</td></tr> </tbody></table></td></tr> </tbody></table><div align="center"></div></form>

@@ -1,0 +1,306 @@
+<!--TOOLBAR_START--><!--TOOLBAR_EXEMPT--><!--TOOLBAR_END-->
+<HTML>
+<HEAD>
+<TITLE>XML DOM Test Page</TITLE>
+<STYLE>
+  .xml {font-size:10pt;font-family:Arial;cursor:hand}
+  .tag {color:purple; font-weight:bold;cursor:hand}
+  .attribute {color:blue; font-weight:bold;cursor:hand}
+  .attrvalue {color:magenta; font-weight:bold;cursor:hand }
+  .comment {color:green; font-weight:bold;cursor:hand }
+  .pi {color:brown; font-weight:bold;cursor:hand }
+  h3  { background-color:#80f0c0 } 
+  A:link { color:#003399; text-decoration:none; }
+  A:visited { color:#6699CC; text-decoration:none; }
+  A:hover { text-decoration:underline; }
+</STYLE>
+<META name="Microsoft Theme" content="mdcont 011, default"></head>
+
+<BODY bgcolor="#ffffff" text="#000000" link="#cc3333" vlink="#808080" alink="#ff3366"><!--mstheme--><font face="verdana, arial, helvetica">
+<H2><!--mstheme--><FONT color="#993300">XML Validator<!--mstheme--></FONT></H2>
+
+<FONT FACE="verdana,arial,helvetica" SIZE=1>
+<A href="#" onclick=self.close()><IMG ALIGN="middle" SRC="demo.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="Click to Close Sample"></A>
+&nbsp;<A href="#" onclick=self.close() CLASS="clsDemo">Close This Sample</A> 
+</FONT><HR>
+
+<SCRIPT>
+var xmldoc;
+var xindex;
+
+var NODE_ELEMENT = 1
+var NODE_ATTRIBUTE = 2
+var NODE_TEXT = 3
+var NODE_CDATA = 4
+var NODE_ENTITYREF = 5
+var NODE_ENTITY = 6
+var NODE_PI = 7
+var NODE_COMMENT = 8
+var NODE_DOCUMENT = 9
+var NODE_DOCTYPE = 10
+var NODE_DOCFRAG = 11
+var NODE_NOTATION = 12
+
+function validate()
+{
+    xmldoc= new ActiveXObject("Microsoft.XMLDOM");
+    xmldoc.onreadystatechange = HandleReadyState
+    xmldoc.ondataavailable = HandleData
+    document.all("XML").innerHTML = "";
+    ERROR.innerHTML = "";
+    ERRORSRC.innerText = "";
+    if (schema.checked)
+    {
+        xmldoc.validateOnParse = true;
+    }
+    else
+    {
+        xmldoc.validateOnParse = false;
+    }
+    var url = xmlurl.value;
+    if (url != "")
+    {
+        xmldoc.load(url);
+    }
+    else
+    {
+        var xml = xmlsrc.value;
+        if (xml == "")
+        {
+            alert("Enter url OR paste XML text");
+            return
+        }
+        xmldoc.loadXML(xml);
+    }
+}
+
+function HandleData()
+{
+    var count = xmldoc.childNodes.length;
+    var root = xmldoc.documentElement;
+    if (root != null)
+    {
+        count += root.childNodes.length;
+    }
+    ERROR.innerHTML = "Loaded " + count + " nodes";
+}
+
+function HandleReadyState()
+{
+    if (xmldoc.readyState == 4)
+    {
+        if (xmldoc.childNodes.length == 0)
+        {
+            HandleError(xmldoc);
+        }
+        else
+        {
+            var msg = "Your XML is well formed";
+            if (schema.checked)
+                msg += " and is validated";     
+            ERROR.innerHTML = msg;
+            xindex = 0;
+            DisplayTree(xmldoc, document.all("XML"));
+        }
+    }
+}
+
+function FormatErrorCode(rc)
+{
+    if (rc < 0) rc = (65536*65536) + rc;
+    return "0x" + rc.toString(16).toUpperCase();
+}
+
+function HandleError()
+{
+    var err = xmldoc.parseError;
+    var msg = "<span class=tag>" + err.reason + "<br>File: " + err.url;
+    msg += "<br>Line: " + err.line;
+    msg += ", Position: " + err.linepos;
+    msg += ", ErrorCode: " + FormatErrorCode(err.errorCode);
+    msg += "</span>";
+    document.all("ERROR").innerHTML = msg;
+    
+    var code = "";
+    if (err.linepos > 0 && err.srcText != "")
+    {
+        code = err.srcText.replace(/\t/g," ") + "\n";
+        for (var i = 1; i < err.linepos; i++)
+        {
+            code += "-";
+        }
+        code += "^";
+    }
+    document.all("ERRORSRC").innerText = code;
+}
+function ToggleVisibility(name)
+{
+    var e = document.all(name);
+    if (e.style.display == "none")
+    {
+        e.style.display = "";
+        xmlurl.value = "";
+    }
+    else
+    {
+        e.style.display = "none";
+    }
+}
+
+function DisplayTree(node, html)
+{
+    var id = "x" + xindex++;
+    html.innerHTML = "<dl class=xml><dt><dd id=" + id + "></dl>";
+    var dd = html.all(id);
+    var attributes = node.attributes;
+    if (attributes != null)
+    {
+        for (var child = attributes.nextNode(); child != null; child = attributes.nextNode())
+        {
+            AddRow(dd, child);
+        }
+    }
+    var children = node.childNodes;
+    for (var child = children.nextNode(); child != null; child = children.nextNode())
+    {
+        AddRow(dd, child);
+    }
+}
+
+function formatNode(type)
+{
+    var types = new Array(
+        "none",     // 0
+        "ELEMENT",  // 1
+        "ATTRIBUTE",// 2
+        "TEXT",     // 3
+        "CDATA",    // 4
+        "ENTITYREF",// 5
+        "ENTITY",   // 6
+        "PI",       // 7
+        "COMMENT",  // 8
+        "DOCUMENT", // 9
+        "SCHEMA",   // 10
+        "DOCFRAG",  // 11
+        "NOTATION"  // 12
+        ); 
+    return types[type];
+}
+
+function getNodeName(node)
+{
+    var type = node.nodeType;
+    var name = "";
+    if (type == NODE_ELEMENT   || 
+        type == NODE_ATTRIBUTE || 
+        type == NODE_ENTITYREF || 
+        type == NODE_PI        || 
+        type == NODE_DOCTYPE   ||
+        type == NODE_ENTITY    ||
+        type == NODE_NOTATION)
+        name = node.nodeName;
+    return name;
+}
+
+function AddRow(dd, child)
+{
+    var id = "x" + xindex++;
+    var type = child.nodeType;
+    var row = "";
+    if (child.hasChildNodes())
+        row = "<li style='list-style-type:disc'>";
+    else 
+        row = "<li style='list-style-type:circle'>";
+
+    var hideValue = false;
+    var style = "xml";
+    if (type == NODE_ELEMENT)
+        style = "tag";
+    else if (type == NODE_ATTRIBUTE)
+        style = "attribute";
+    else if (type == NODE_COMMENT)
+        style = "comment";
+    else if (type == NODE_PI)
+    {
+        if (child.attributes != null) 
+            hideValue = true;
+        style = "pi";
+    }
+
+    row += "<span class=" + style + " onclick=ToggleRow('" + id + "') ";
+    row += "onmouseover=MouseMove('over') onmouseout=MouseMove('exit')>";
+    row += formatNode(type) + ": ";
+    
+    row += getNodeName(child);
+
+    if (!hideValue && child.nodeValue != null )
+        row += " " + child.nodeValue;
+        
+    row += "</span><div xstate=0 id=" + id + "></div>";
+
+    dd.insertAdjacentHTML("BeforeEnd", row);
+
+    // store XML nodes on html elements as expando properties.
+    var item = dd.children(dd.children.length-1); // the list item.
+    var div = item.all(id);
+    div.xml = child;
+}
+
+function ToggleRow(divid)
+{
+    var div = XML.all(divid);
+    if (div.xstate == 0)
+    {
+        div.xstate = 1;
+        DisplayTree(div.xml, div);
+    }
+    else if (div.xstate == 1)
+    {
+        div.xstate = 2;
+        div.style.display = "none";
+    }
+    else
+    {
+        div.xstate = 1;
+        div.style.display = "";
+    }
+}
+
+function MouseMove(which)
+{
+    var row;
+    var color = ((which == "over") ? "yellow" : "");
+
+    row = window.event.srcElement;
+
+    row.style.backgroundColor = color;
+
+}
+</SCRIPT>
+
+<P>
+Enter a url to load:
+<P> <INPUT id="xmlurl" value="weatherReport.xml" size="60" >
+<P>
+or paste in some XML: 
+<P><INPUT type="button" value="PASTE" onclick="ToggleVisibility('xmlsrc')"> 
+<P><TEXTAREA cols=70 id=xmlsrc rows=20 style="DISPLAY: none"></TEXTAREA>
+<P>
+check the "Validation" box if you want to validate your document:
+<P><INPUT type="checkbox" checked id="schema">Validation
+<P>
+click the "Validate" button to see if your text is valid XML:
+
+<P><INPUT type="button" value="VALIDATE" style="FONT-WEIGHT: bold" onclick="validate();">
+<P><BR>&nbsp;
+<DIV id="ERROR" style="COLOR: purple; FONT-SIZE: 16px; FONT-WEIGHT: bold"></DIV>
+
+<xmp id="ERRORSRC"></xmp>
+<DIV id="XML" class="xml"></DIV>
+
+<P><HR>
+<FONT FACE="MS SANS SERIF" SIZE="1" COLOR="black">
+&copy; <A HREF="http://www.microsoft.com/misc/cpyright.htm" TARGET="_top">2000 Microsoft Corporation. All rights reserved. Terms of use</A>. 
+</FONT></P>
+</BODY>
+</HTML>

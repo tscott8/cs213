@@ -1,0 +1,164 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//w3c/DTD XHTML 1.0 Strict //EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
+<head>
+	<title>Mileage Calculator</title>
+	<script type = "text/javascript">
+		function setFocus() {
+ 		   document.getElementById("startCity").focus();
+		}
+
+		function checkForm() {
+			var helperMsg = "Please enter a legal value for "; 
+			var startCity = document.getElementById("startCity");
+			var startState = document.getElementById("startState");
+			var endCity = document.getElementById("endCity");
+			var endState = document.getElementById("endState");
+			if (!startCity.value.length | !isNaN(startCity.value)) {
+				alert(helperMsg + "Start City");
+				startCity.focus();
+				return false;
+			}
+			if (!startState.value.length | startState.value.length > 3 | !isNaN(startState.value)) {
+				alert(helperMsg + "Start State");
+				startState.focus();
+				return false;
+			}
+			if (!endCity.value.length | !isNaN(endCity.value)) {
+				alert(helperMsg + "End City");
+				endCity.focus();
+				return false;
+			}
+			if (!endState.value.length | endState.value.length > 3 | !isNaN(endState.value)) {
+				alert(helperMsg + "End State");
+				endState.focus();
+				return false;
+			}
+			return true;	
+		}
+		
+		function buildQueryString()
+		{
+			var queryString="http://157.201.194.254/cgi-bin/ercanbracks/mileage/mileageAjaxXML?";
+			var startCity = document.getElementById("startCity").value;
+			var startState = document.getElementById("startState").value;
+			var endCity = document.getElementById("endCity").value;
+			var endState = document.getElementById("endState").value;
+			queryString+="startCity="+startCity+"&startState="+startState+"&endCity="+endCity+"&endState="+endState;
+			console.log(queryString);
+			return queryString;
+		}
+
+		function parseData(trip)
+		{
+			var data="<br>The distance between ";
+			console.log(trip);
+			var sC=trip.getElementsByTagName("startcity")[0].innerHTML;
+			var sS=trip.getElementsByTagName("startstate")[0].innerHTML;
+			var eC=trip.getElementsByTagName("endcity")[0].innerHTML;
+			var eS=trip.getElementsByTagName("endstate")[0].innerHTML;
+			var miles=trip.getElementsByTagName("miles")[0].innerHTML;
+			var tmode=trip.getElementsByTagName("tmode");
+			var modes="";
+			for(var i =0; i < tmode.length; i++) {
+				modes+="    - "+tmode[i].innerHTML+"<br>";
+				}
+
+  			data+=sC+", "+sS+" and "+eC+", "+eS+" is "+miles+" miles.<br><br>"
+  				+"The transportation modes available are:<br><br>"+modes;
+  			console.log(data);
+			return data;
+		}
+
+		var request;
+		function loadXML() 
+		{
+			var validate = checkForm();
+			if(validate	!= true)
+			{
+				return;
+			}//check input fields
+
+			var url = buildQueryString();
+			var response;
+
+			//ajax request
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+				request=new XMLHttpRequest();
+			}
+			else {// code for IE6, IE5
+				request=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			request.onreadystatechange=function() {
+				if (request.readyState==4 && request.status==200) {
+					response=request.responseText;
+					if(window.DOMParser) {
+						parser = new DOMParser();
+						trip = parser.parseFromString(response, "text/xml");
+					}	
+					else { // IE
+						xmlDoc=new	ActiveXObject("Microsoft.XMLDOM");
+						xmlDoc.async = false;
+						xmlDoc.loadXML(txt);
+					}
+					document.getElementById("result").innerHTML=parseData(trip);
+				}
+			}
+			request.open("GET",url,true);
+			request.send();
+		};
+		
+		
+	</script>
+	<style type="text/css">
+		.center {
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 80%;
+    	}
+		html {
+			height: 100%;
+		}
+		body {
+			font-family: Arial;
+			background: url("http://www.internationalcounselor.com/images/Globe-Map%202_000014412495Large.jpg")no-repeat center center fixed;
+			background-size: cover;
+			font-weight: bold;
+			margin-top: 10%;
+			}
+		fieldset {
+			border-width: .25pc;
+			border-radius: .25pc;
+			border-color: Black;
+			background-color: rgb(233,242,252);  
+			min-width:200px;
+			max-width: 300px;	
+
+		}
+		ul, li {
+			list-style-type: none;
+			padding: 2%;
+			width: 100%;
+		}
+		li input{
+			width:55%;
+		}
+	</style>
+	</head>
+<body onload="setFocus()">
+	<fieldset class="center">
+		Distance Between Major Cities<hr>
+		<form method="GET">
+			<ul>
+				<li>Start City: <input type="text" name="startCity" id="startCity"  placeholder="Denver"/></li>
+				<li>Start State: <input type="text" name="startState" id="startState" placeholder="CO"/></li>
+				<li>End City: <input type="text" name="endCity" id="endCity" placeholder="Boise"/></li>
+				<li>End State: <input type="text" name="endState" id="endState" placeholder="ID"/></li>
+				<li><input style="text-align:center; width:90%" type="button" name="calc" id="calc" value="Calculate Mileage" onclick="loadXML()" /></li>
+				<li style="font-size:90%" id="result"></li>
+			</ul>
+		</form>		
+	</fieldset>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assign04.css"/>
+	<title>Mortage Calculator</title>
+	<script type='text/javascript'>
+		function validateForm(APR, loanTerm, loanAmt, helperMsg) {
+			var APR = document.getElementById(APR);
+			if (!APR.value.length | isNaN(APR.value)) {
+				alert(helperMsg + "APR");
+				APR.focus();
+				return false;
+			}
+			var loanTerm = document.getElementById(loanTerm);
+			if (!loanTerm.value.length | isNaN(loanTerm.value)) {
+				alert(helperMsg  + "loanTerm");
+				loanTerm.focus();
+				return false;
+			}
+			var loanAmt = document.getElementById(loanAmt);
+			if (!loanAmt.value.length | isNaN(loanAmt.value)) {
+				alert(helperMsg + "loanAmt");
+				loanAmt.focus();
+				return false;
+			}
+			return true;	
+		}
+		function calcMonthlyPay() {
+			//M = P * (J / (1 - ((1 + J)^-N)))
+			var apr = document.getElementById("APR").value / 100;
+			var mr = apr/12;
+			var yrs = document.getElementById("loanTerm").value;
+			var numP = yrs*12; 
+			var amt = document.getElementById("loanAmt").value;
+			var result = Math.floor((amt*mr)/(1-Math.pow((1 + mr),(-1*numP)))*100)/100;
+			document.getElementById("numPayments").value=numP;
+			document.getElementById("result").value="$"+result.toFixed(2);
+		}
+		function setFocus() {
+ 		   document.getElementById("APR").focus();
+		}
+	</script>
+</head>
+
+<body onload="setFocus()">
+	<div id="calculator">
+		<br>
+		<form name="calc">	
+			<table class="center">
+				<tr>
+				<td>
+					<div style="text-align:center">Online Mortgage Calculator</div><hr>
+					APR:<input type="text" id="APR" placeholder="%" size="6" onfocus="this.select()" onchange="calcMonthlyPay()"><br>
+					Loan Term:<input type="text" id="loanTerm" placeholder="years" size="6" onfocus="this.select()" onchange="calcMonthlyPay()"><br>
+					Loan Amount:<input type="text" id="loanAmt" placeholder="$" size="6" onfocus="this.select()" onchange="calcMonthlyPay()"><br>
+					<input type="reset" value="Clear" onclick="setFocus()">
+					<input type="button" value="Calculate Mortgage" 
+						onclick="calcMonthlyPay(); validateForm('APR', 'loanTerm', 'loanAmt', 'Please enter a legal value for ')" 
+						><hr>
+					Number of Payments: <input type="text" id="numPayments" readonly="readonly" size="6"><br>
+					Monthly Payment: <input type="text" id="result" readonly="readonly" size="6"><br>	
+				</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+	</div>
+	<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>
+</p>
+        
+
+	<div id="footer">
+		<footer>Published by: Tyler Scott - Computer Science and Engineering Student - BYUI - Contact Email:<a href="mailto:tybugman@hotmail.com"> tybugman@hotmail.com</a></footer>
+	</div>
+
+</body>
+</html>

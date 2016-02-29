@@ -1,0 +1,58 @@
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+body {
+		background-color: black;
+		margin-top: 5%;
+		margin-bottom:	5%;
+}
+input {
+	width: 98.5%;
+}
+select {
+	width: 100%;
+	direction: rtl;
+}
+
+input,select{
+	background-color: lightgray;
+	text-align: center;
+}
+#container {
+	background-color: Maroon;
+	border: 5px solid Gray;
+	padding: 1%;
+	color: white;
+}
+#container tr td, #container tr th{
+	max-width: 50%;
+	vertical-align: top;
+}
+#registration {
+	text-align: center;
+	margin-right: 1%;
+}
+#regform table {
+	border-collapse: collapse;
+	text-align: justify	;
+	width: 	100%;
+}	
+#regform table tr td {
+	max-width: 	50%;
+}
+
+#registerButton {
+	width: 100%;
+}
+#displayRegistered {
+	text-align: center;
+	margin-left: 1%;
+}
+#displayRegistered table {
+	width: 100%;
+}
+#displayRegistered table tr{
+	border: 1px solid black;
+}

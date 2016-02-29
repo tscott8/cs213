@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assign04.css"/>
+	<title>Mortage Calculator</title>
+	<script type='text/javascript'>
+		function validateForm() {
+			var helperMsg = "Please enter a legal value for "; 
+			var APR = document.getElementById("APR");
+			if (!APR.value.length | isNaN(APR.value)) {
+				alert(helperMsg + "APR");
+				APR.focus();
+				return false;
+			}
+			var loanTerm = document.getElementById("loanTerm");
+			if (!loanTerm.value.length | isNaN(loanTerm.value)) {
+				alert(helperMsg  + "loanTerm");
+				loanTerm.focus();
+				return false;
+			}
+			var loanAmt = document.getElementById("loanAmt");
+			if (!loanAmt.value.length | isNaN(loanAmt.value)) {
+				alert(helperMsg + "loanAmt");
+				loanAmt.focus();
+				return false;
+			}
+			return true;	
+		}
+		function setFocus() {
+ 		   document.getElementById("APR").focus();
+		}
+	</script>
+</head>
+
+<body onload="setFocus()">
+	<div id="calculator">
+		<br>
+		<form name="calc" method="get" action="http://localhost/cgi-bin/sco10002/assign09" onsubmit="return validateForm()">
+			<table class="center">
+				<tr>
+				<td>
+					<div style="text-align:center">Mortgage Calculator 2.0</div><hr>
+					APR:<input type="text" name="apr" id="APR" placeholder="%" size="6" onfocus="this.select()" required>
+					<br>
+					Loan Term:<input type="text" name="yrs" id="loanTerm" placeholder="years" size="6" onfocus="this.select()" required>
+					<br>
+					Loan Amount:<input type="text" name="amt" id="loanAmt" placeholder="$" size="6" onfocus="this.select()" required>
+					<br>
+					<hr>
+					<input type="reset" value="Clear" onclick="setFocus()">
+					<input type="submit" value="Calculate Mortgage">
+				</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+	</div>
+</body>
+</html>

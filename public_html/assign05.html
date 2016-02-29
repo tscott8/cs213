@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assign05.css"/>
+	<title>Snowboard Equipment Order Form</title>
+	<script src="assign05.js"></script>
+</head>
+
+<body onload="setFocus()">
+	<form id="shop" name="shopForm" class="center">	
+		<div style="text-align:center; padding-top:10px">Equipment Order Form</div><hr><br>
+		<table id="contain">
+			<tr>
+				<td>
+					<table id="userInfo">
+						<tr>
+							<td>
+								First Name:
+							</td>
+							<td>
+								<input type="text" id="FirstName" placeholder="enter first name" size="20" onfocus="this.select()" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Last Name:
+							</td>
+							<td>
+								<input type="text" id="LastName" placeholder="enter last name" size="20" onfocus="this.select()" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Address:
+							</td>
+							<td>
+								<textarea id="Address" rows="2" cols="21" onfocus="this.select()" required></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Cell Phone:
+							</td>
+							<td>
+								<input type="tel" pattern ='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}' id="Phone" placeholder="xxx-xxx-xxxx" maxlength="13"  size="20" onfocus="this.select()" onchange="phoneValidate()" required>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<div style="text-align:right">
+						<img src="http://www.mycrunkspace.com/content/backgrounds/6f50c88910a26ab158d1f4cf3096fe87.gif" width="230.1px" height="273px">
+					</div>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<br>		
+		<table id="productTable">
+			<tr>
+				<th>
+					Product
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					Qty
+				</th>
+				<th>
+					Add to cart
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Snowboard
+				</td>
+				<td>
+					$399.99
+				</td>
+				<td>
+					<input type="text" id="qtyA" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" id="addA" onclick="calcTotal()">
+				</td>
+			</tr>
+			<tr class="alt">
+				<td>
+					Bindings
+				</td>
+				<td>
+					$229.99
+				</td>
+				<td>
+					<input type="text" id="qtyB" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" id="addB" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr>
+				<td>
+					Boots
+				</td>
+				<td>
+					$119.99
+				</td>
+				<td>
+					<input type="text" id="qtyC" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" id="addC" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr class="alt">
+				<td>
+					Goggles
+				</td>
+				<td>
+					$199.99
+				</td>
+				<td>
+					<input type="text" id="qtyD" size="2" min="0" maxlength="2" >
+				</td>
+				<td>
+					<input type="checkBox" id="addD" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					Total:<input type="text" id="totalAll" readonly="readonly" size="6">				
+				</td>
+			</tr>
+		</table>
+		<br><br>
+		<!--validateForm('APR', 'loanTerm', 'loanAmt', 'Please enter a legal value for ')"--> 		
+		
+		<table id="cardInput" align="center">
+			<tr>
+				<td>
+					<div style="text-align:left">
+						Payment Options:
+					</div>
+					<ul id="payOptions">
+						<li> <input type="radio" name="pay" id="payType" value="Visa">
+						<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8Qk3Ll-NA_Cr6j2ZuUUo28JLhQqrJExiU7TXLjejv4A0t5cOD"/>
+							Visa
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="MasterCard">
+						<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd6Bgs_TSI5_HuQgrYMvRt-3_3PfBGTtnsObE4qrNDeP6cK_3Q9Q"/>
+							MasterCard
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="AmEx">
+						<img src="https://cdn0.iconfinder.com/data/icons/credit_card_icons/32/amex.png"/>
+							American Express
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="Discover">
+						<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTIXWxto7keiEImF-2DLh_PPQF0YiAHwCKjK-UpZJDtQ1oZPYnO"/>
+							Discover
+						</li>		
+					</ul>
+				</td>
+				<td>
+					<ul id="payInput">
+						<li>
+							Card Number: <input type="text" pattern='\d{4}[\s.-]?\d{4}[\s.-]?\d{4}[\s.-]?\d{4}' id="CardNum" 
+							placeholder="xxxx-xxxx-xxxx-xxxx" maxlength="19"  size="20" onfocus="this.select()" onchange="cardValidate()" required>
+						</li>
+						<li>
+							Exp. Date: <input type="text" id="CardExp" pattern='[1-12]\d{2}' placeholder="xxx" maxlength="4"  size="20" onfocus="this.select()" onchange="cardValidate()" required>
+						</li>
+						<li>
+							<input type="reset" value="Clear Order" onclick="setFocus()">
+						</li>
+						<li>
+							<input type="submit" value="Submit Order" onclick="validateUser(); validateCard(); submitForm()">
+						</li>
+					</td>
+				</tr>			
+			</table>
+
+		</form>
+		<br>
+		<br>
+
+		<div id="footer">
+			<footer>Published by: Tyler Scott - Computer Science and Engineering Student - BYUI - Contact Email:<a href="mailto:tybugman@hotmail.com"> tybugman@hotmail.com</a></footer>
+		</div>
+
+	</body>
+	</html>

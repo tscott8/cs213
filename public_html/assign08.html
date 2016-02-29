@@ -1,0 +1,151 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//w3c/DTD XHTML 1.0 Strict //EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
+<head>
+	<title>City Population Displayer</title>
+	<script type = "text/javascript">
+		var xmlhttp;	
+		function getCityData() 
+		{
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					document.getElementById("cityNames").value=xmlhttp.responseText;
+				}
+			}
+			var location="http://localhost/~ercanbracks/";
+			var value = document.getElementById("nation").value;
+			if (value == "US") {location += "usa.txt"; console.log(location);}
+			else if (value == "MEX") {location += "mexico.txt";console.log(location);}
+			else if (value =="CAN") {location += "canada.txt";console.log(location);}
+			else if (value == "RUS") {location += "russia.txt";console.log(location);}
+			xmlhttp.open("GET",location,true);
+			xmlhttp.send();
+		};
+
+		var jsonReq;
+		function getNewData()
+		{
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+					jsonReq=new XMLHttpRequest();
+			}
+			else {// code for IE6, IE5
+				jsonReq=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			jsonReq.onreadystatechange=function() {
+				if (jsonReq.readyState==4 && jsonReq.status==200) {
+					var jsonObj = JSON.parse(jsonReq.responseText);
+					var array = jsonObj.students;
+					console.log(array);
+					var parsed = "<table>" +
+									"<tr>" + 
+										"<th>First</th>" +	
+										"<th>Last</th>" +
+										"<th>Address</th>" +
+										"<th>Major</th>" +
+										"<th>GPA</th>" +																				
+									"</tr>";
+					var i;
+					for (i = 0; i < array.length; i++) 
+					{
+						parsed += "<tr>" +  
+						"<td>" + array[i].first + "</td>" +
+						 "<td>" + array[i].last + "</td>" +
+						 "<td>" + array[i].address.city  +",\n"+ array[i].address.state +" "+ array[i].address.zip + "</td>" +
+						 "<td>" + array[i].major + "</td>" +
+						 "<td>" + array[i].gpa + "</td>" +
+						 "</tr>";
+					}
+					console.log(parsed);
+					parsed += "</table>";
+					document.getElementById("jsonDisp").innerHTML=parsed;		}
+				}
+				var location2=document.getElementById("urlPath").value;
+				jsonReq.open("GET",location2,true);
+				jsonReq.send();
+			};
+	</script>
+	<style type="text/css">
+		.center {
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 80%;
+    	}
+		html {
+			height: 100%;
+		}
+		body {
+			font-family: Arial;
+			background: url("http://www.internationalcounselor.com/images/Globe-Map%202_000014412495Large.jpg")no-repeat center center fixed;
+			background-size: cover;
+			font-weight: bold;
+			margin-top: 7.5%;
+			}
+		fieldset {
+			border-width: .25pc;
+			border-radius: .25pc;
+			border-color: Black;
+			background-color: rgb(233,242,252);  
+			min-width:275px;
+			max-width: 300px;	
+		}
+		fieldset p {
+			width: 100%;
+			text-align: justify;
+			}
+		fieldset textarea {
+			background-color: rgb(139,146,154);
+			text-align: right;
+			font-size: 110%;
+			resize: none;
+			border:1px solid black;
+		}
+		div#jsonDisp table {
+			width: 100%;
+		}
+		div#jsonDisp table,tr,td,th {
+			border-collapse: collapse;
+			border:1px solid black;
+			text-align: center;
+			font-family: verdana;
+			font-size: 90%;
+			padding: 1%;
+		}
+	</style>
+	</head>
+	<body onload="getCityData()">
+		<fieldset class="center">
+			<legend>Part 1</legend>
+			<p class="center">
+				Select a country: 
+				<select id = "nation" name = "country1"  onchange = "getCityData()" autofocus>
+					<option value = "US">US</option>
+					<option value = "MEX" >Mexico</option>
+					<option value = "CAN" >Canada</option>
+					<option value = "RUS" >Russia</option>
+				</select>
+				<br>
+			<br>
+			<textarea id = "cityNames" rows = "11" cols = "27" readonly="readonly"></textarea>
+		</p>
+	</fieldset>
+	<fieldset class="center">
+		<legend>Part 2</legend>
+		<p class="center">
+		<form>
+			URL: <input type="text" id="urlPath" name="path" value ="http://localhost/~ercanbracks/cs213/json.txt">
+			<input type="button" value="Load" onclick="getNewData()">
+		</form>
+		<br>
+		<div id="jsonDisp">__</div>
+		</p>
+	</fieldset>
+
+
+</body>
+</html>

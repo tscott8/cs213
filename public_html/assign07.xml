@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE bsa SYSTEM "assign06.dtd">
+<?xml-stylesheet type="text/xsl" href="assign07.xsl"?>
+<bsa>
+	<council councilName="Jedi">
+		<troop unitName="JangoClones" number="501">
+			<scout>
+				<firstName>Obi-Wan</firstName>
+				<lastName>Kenobi</lastName>
+				<phone>1-800-str-wrs1</phone>
+				<address>
+					<streetName>1234 W Tuskan Raider Canyon</streetName>
+					<city>Desert Wasteland</city>
+					<state>Tattooine</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<rank dateEarned="05-25-1981">Life</rank>
+				<meritBadge dateEarned="05-26-1977">First Aid</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Swimming</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Life Saving</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Enviromental Science</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Yoda</firstName>
+				<lastName>Shortpuppet</lastName>
+				<phone>1-800-str-wrs3</phone>
+				<address>
+					<streetName>9012 N Swamp Hut Ln</streetName>
+					<city>Nasty Swamp</city>
+					<state>Dagobah</state>
+				</address>
+				<rank dateEarned="06-20-1980">Tenderfoot</rank>
+				<rank dateEarned="06-20-1981">2nd Class</rank>
+				<rank dateEarned="06-20-1982">1st Class</rank>
+				<rank dateEarned="06-20-1983">Star</rank>
+				<rank dateEarned="06-20-1984">Life</rank>
+				<rank dateEarned="06-20-1985">Eagle</rank>	
+				<meritBadge dateEarned="06-20-1980">Camping</meritBadge>
+				<meritBadge dateEarned="06-21-1980">Cooking</meritBadge>
+				<meritBadge dateEarned="06-22-1980">Enviromental Science</meritBadge>
+				<meritBadge dateEarned="06-23-1980">Citizenship in the World</meritBadge>
+				<meritBadge dateEarned="06-24-1980">Citizenship in the Nation</meritBadge>
+				<meritBadge dateEarned="06-25-1980">Citizenship in the Community</meritBadge>
+				<meritBadge dateEarned="06-26-1980">Lifesaving</meritBadge>
+				<meritBadge dateEarned="06-27-1980">Personal Management</meritBadge>
+				<meritBadge dateEarned="06-28-1980">Hiking</meritBadge>
+				<meritBadge dateEarned="06-29-1980">Family Life</meritBadge>
+			</scout>
+			<scout>
+				<firstName>Mace</firstName>
+				<lastName>Windu</lastName>
+				<phone>1-800-str-wrs0</phone>
+				<address>
+					<streetName>1234 Floating Hotel st</streetName>
+					<city>Downtown Slums</city>
+					<state>Couroscant</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<rank dateEarned="05-25-1981">Life</rank>
+				<meritBadge dateEarned="05-26-1977">Personal Fitness</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Communication</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Citizenship in the World</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Emergency Preparedness</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Padme</firstName>
+				<lastName>Amidala</lastName>
+				<phone>1-800-str-wr1s</phone>
+				<address>
+					<streetName>4567 Palace Quarters Ln</streetName>
+					<city>Capital</city>
+					<state>Naboo</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-26-1977">Sustainability</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Lifesaving</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Swimming</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Citizenship in the Nation</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>JarJar</firstName>
+				<lastName>Binks</lastName>
+				<phone>1-800-str-wr2s</phone>
+				<address>
+					<streetName>0001 Bubble Dome Cir</streetName>
+					<city>Gungan City</city>
+					<state>Naboo</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<meritBadge dateEarned="05-26-1977">First Aid</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Swimming</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Enviromental Science</meritBadge>		
+			</scout>
+		</troop>
+		<troop unitName="Rebels" number="456">
+			<scout>
+				<firstName>Luke</firstName>
+				<lastName>Skywalker</lastName>
+				<phone>1-800-str-wrs2</phone>
+				<address>
+					<streetName>5678 E Sand Dune Plaza</streetName>
+					<city>Desert Wasteland</city>
+					<state>Tattooine</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<meritBadge dateEarned="05-26-1977">Camping</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Cooking</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Electronics</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Piloting</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Leah</firstName>
+				<lastName>Skywalker</lastName>
+				<phone>1-800-str-wrs6</phone>
+				<address>
+					<streetName>1234 N Palace Dr</streetName>
+					<city>Lush Green</city>
+					<state>Alderaan</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<meritBadge dateEarned="05-26-1977">Citizenship in the Community</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Citizenship in the Nation</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Cooking</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Han</firstName>
+				<lastName>Solo</lastName>
+				<phone>1-800-str-wrs7</phone>
+				<address>
+					<streetName></streetName>
+					<city>Jawwa Club</city>
+					<state>Tattooine</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-26-1977">Camping</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Cooking</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Fitness</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Personal Management</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Chewbacca</firstName>
+				<lastName>Fuzball</lastName>
+				<phone>1-800-str-wrs8</phone>
+				<address>
+					<streetName>8901 Barked Plaza</streetName>
+					<city>Jungle City</city>
+					<state>Kashyyk</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-26-1977">Camping</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Cooking</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Electronics</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Piloting</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Admiral</firstName>
+				<lastName>Ackbar</lastName>
+				<phone>1-800-str-wrs9</phone>
+				<address>
+					<streetName>2345 Undersea St</streetName>
+					<city>Fishhead Town</city>
+					<state>WaterWorld</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<meritBadge dateEarned="05-26-1977">Camping</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Communication</meritBadge>
+			</scout>
+		</troop>
+	</council>
+	<council councilName="Sith">
+		<troop unitName="BobaClones" number="502">
+			<scout>
+				<firstName>Darth</firstName>
+				<lastName>Vader</lastName>
+				<phone>1-800-str-wrs4</phone>
+				<address>
+					<streetName>3456 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<rank dateEarned="05-25-1981">Life</rank>
+				<rank dateEarned="05-25-1982">Eagle</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>
+				<meritBadge dateEarned="06-23-1980">Citizenship in the World</meritBadge>
+				<meritBadge dateEarned="06-24-1980">Citizenship in the Nation</meritBadge>
+				<meritBadge dateEarned="06-25-1980">Citizenship in the Community</meritBadge>
+				<meritBadge dateEarned="06-26-1980">Cycling</meritBadge>
+				<meritBadge dateEarned="06-27-1980">Personal Fitness</meritBadge>
+				<meritBadge dateEarned="06-28-1980">Sustainability</meritBadge>
+			</scout>
+			<scout>
+				<firstName>Boba</firstName>
+				<lastName>Fett</lastName>
+				<phone>1-800-str-wr3s</phone>
+				<address>
+					<streetName>3456 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Jabba</firstName>
+				<lastName>Hut</lastName>
+				<phone>1-800-str-wr4s</phone>
+				<address>
+					<streetName>6789 Fat Lard Dr</streetName>
+					<city>Desert Wasteland</city>
+					<state>Tatooine</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Kylo</firstName>
+				<lastName>Ren</lastName>
+				<phone>1-800-str-wr5s</phone>
+				<address>
+					<streetName>unknown</streetName>
+					<city>unknown</city>
+					<state>unknown</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Chuck</firstName>
+				<lastName>Norris</lastName>
+				<phone>1-800-str-wr0s</phone>
+				<address>
+					<streetName>Wherever danger lies</streetName>
+					<city>Awesome City</city>
+					<state>Of Destruction</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<rank dateEarned="05-25-1981">Life</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+		</troop>
+		<troop unitName="Empire" number="345">
+			<scout>
+				<firstName>Emperor</firstName>
+				<lastName>Palpatine</lastName>
+				<phone>1-800-str-wrs5</phone>
+				<address>
+					<streetName>7890 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="06-20-1980">Tenderfoot</rank>
+				<rank dateEarned="06-20-1981">2nd Class</rank>
+				<rank dateEarned="06-20-1982">1st Class</rank>
+				<rank dateEarned="06-20-1983">Star</rank>
+				<rank dateEarned="06-20-1984">Life</rank>
+				<meritBadge dateEarned="06-20-1980">Family Life</meritBadge>
+				<meritBadge dateEarned="06-21-1970">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="06-22-1980">Personal Management</meritBadge>
+				<meritBadge dateEarned="06-23-1980">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Count</firstName>
+				<lastName>Dooku</lastName>
+				<phone>1-800-str-wr6s</phone>
+				<address>
+					<streetName>3456 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<rank dateEarned="05-25-1980">Star</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>General</firstName>
+				<lastName>Grievous</lastName>
+				<phone>1-800-str-wr7s</phone>
+				<address>
+					<streetName>3456 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<rank dateEarned="05-25-1979">1st Class</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Darth</firstName>
+				<lastName>Maul</lastName>
+				<phone>1-800-str-wr8s</phone>
+				<address>
+					<streetName>3456 S Death Star Cir</streetName>
+					<city>Deep Space</city>
+					<state>Galaxy FarFarAway</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+			<scout>
+				<firstName>Jango</firstName>
+				<lastName>Fett</lastName>
+				<phone>1-800-str-wr9s</phone>
+				<address>
+					<streetName>0002 Unit 4</streetName>
+					<city>Floatilla</city>
+					<state>Mygeeto</state>
+				</address>
+				<rank dateEarned="05-25-1977">Tenderfoot</rank>
+				<rank dateEarned="05-25-1978">2nd Class</rank>
+				<meritBadge dateEarned="05-26-1977">Family Life</meritBadge>
+				<meritBadge dateEarned="05-27-1977">Emergency Preparedness</meritBadge>
+				<meritBadge dateEarned="05-28-1977">Personal Management</meritBadge>
+				<meritBadge dateEarned="05-29-1977">Communication</meritBadge>		
+			</scout>
+		</troop>
+	</council>
+</bsa>

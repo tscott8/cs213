@@ -1,0 +1,13 @@
+<form> onsubmit="return validation()" action = program. action ="mortgage.php"
+query strings can be handled with gets and posts
+form element have attribute: name = value
+query string
+payment=visa & expireDate=2007 & name=steve %20 Jones
+string queryString = getenv("QUERY_STRING"); <-- c++
+cgi directory needs to be included.
+home directoru cgi-bin
+
+
+cout << "Content-type:text/html \n\n";
+make a make file to compile and reset the permissions back to 755
+

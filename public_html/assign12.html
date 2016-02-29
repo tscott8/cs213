@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assign12.css"/>
+	<title>Piano Festival Signup</title>
+	<script src="assign12.js"></script>
+	<!--meta name=viewport content='width=700'-->
+</head>
+<body onload="loadAJAX()">
+<table id="container" class="center">
+<tr>
+	<th colspan="2"><h3>BYU-Idaho Piano Festival Signup</h3></th>
+</tr>
+<tr>
+<td>
+<fieldset id="registration">
+	<legend>Registration Form</legend>
+	<form id="regform" action="">
+		<table>
+			<tr>
+				<td>Act Type:</td>
+				<td><select id="type" name="type" onfocus="checkDisplay()" onchange="checkDisplay()">
+					<option>Solo</option>
+					<option>Duet</option>
+					<option>Concerto</option>
+				</select></td>
+			</tr>
+			<tr>
+			<td colspan="2"><hr></td>
+			</tr>
+			<tr id="performer1" style="display:none"> 
+					<td colspan="2" style="text-align:center">Performer 1:</td>
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" id="first" name="first" required/></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><input type="text" id="last" name="last" required/></td>
+			</tr>
+			<tr>
+				<td>Student ID:</td>
+				<td><input type="text" id="studentID" name="studentID" required/></td>
+			</tr>
+			<tr>
+			<td colspan="2"><hr></td>
+			</tr>
+			
+			<tr id="performer2" style="display:none"> 
+					<td colspan="2" style="text-align:center">Performer 2:</td>
+			</tr>
+			<tr id="hideF" style="display:none">
+				<td>First Name:</td>
+				<td><input type="text" id="first2" name="first2"/></td>
+			</tr>
+			<tr id="hideL" style="display:none">
+				<td>Last Name:</td>
+				<td><input type="text" id="last2" name="last2"/></td>
+			</tr>
+			<tr id="hideI" style="display:none">
+				<td>Student ID:</td>
+				<td><input type="text" id="studentID2" name="studentID2"/></td>
+			</tr>
+			<tr id="hideHr" style="display:none">
+				<td colspan="2"><hr></td>
+			</tr>
+
+			<tr>
+				<td>Skill Level:</td>
+				<td><select id="skill" name="skill">
+					<option>Beginner</option>
+					<option>Intermediate</option>
+					<option>Pre-advanced</option>
+					<option>Advanced</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Instrument:</td>
+				<td><select id="instrument" name="instrument" onchange="getInstrument()">
+					<option>Piano</option>
+					<option>Voice</option>
+					<option>String</option>
+					<option>Organ</option>
+					<option id="replaceInstrument">Other</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Location:</td>
+				<td><select id="location" name="location" onchange="getLocation()">
+					<option>Agriculture Engineering Building</option>
+					<option>Austin (Mark) Technical and Engineering Building</option>
+					<option>Benson (Ezra Taft) Biological Sciences Building</option>
+					<option>BYU-Idaho Center</option>
+					<option>Clarke (John L.) Building</option>
+					<option>Hinckley (Gordon B.) Building</option>
+					<option>Kirkham (Oscar A.) Building</option>
+					<option>McKay (David O.) Library</option>
+					<option>Ricks (Thomas E.) Building</option>
+					<option>Romney (George S.) Sciences Building</option>
+					<option>Smith (Joseph Fielding) Building</option>
+					<option>Snow (Eliza R.) Performing Arts Center</option>
+					<option>Spori (Jacob) Building</option>
+					<option>Taylor (John) Building</option>
+					<option id="replaceLocation">Other</option>
+					<!--input type="text" id="location" name="location" placeholder="eg. AUS" required/--></td>
+			</tr>
+
+			<tr>
+				<td>Room #:</td>
+				<td><input type="text" id="room" name="room" pattern="\d{3}" maxlength="3" required/></td>
+			</tr>
+			<tr>
+				<td>Time Slot:</td>
+				<td><select id="time" name="time">
+					<option>8:00am</option>
+					<option>8:30am</option>
+					<option>9:00am</option>
+					<option>9:30am</option>
+					<option>10:00am</option>
+					<option>10:30am</option>
+					<option>11:00am</option>
+					<option>11:30am</option>
+					<option>12:00pm</option>
+					<option>12:30pm</option>
+					<option>1:00pm</option>
+					<option>1:30pm</option>
+					<option>2:00pm</option>
+					<option>2:30pm</option>
+					<option>3:00pm</option>
+					<option>3:30pm</option>
+					<option>4:00pm</option>
+					<option>4:30pm</option>
+					<option>5:00pm</option>
+					<option>5:30pm</option>
+					<option>6:00pm</option>
+					<option>6:30pm</option>
+					<option>7:00pm</option>
+					<option>7:30pm</option>
+					<option>8:00pm</option>
+				</td>
+			</tr>
+			<tr>
+			<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td><input type="reset" value="Clear" style="width:90%" /></td>
+				<td><input type="button" id="registerButton" value="Register" onclick="sendAJAX()"/></td>
+			</tr>		
+		</table>
+	</form>
+</fieldset>
+</td>
+<td>
+<fieldset id="displayRegistered">
+	<legend>Registered</legend>
+	<table id ="acts">
+		<tr>
+			<th>Type</th>
+			<th>Skill</th>
+			<th>Name</th>
+			<th>ID</th>
+			<th>Instrument</th>
+			<th>Location</th>
+			<th>Room #</th>
+			<th>Time</th>
+		</tr>
+	</table>
+</fieldset>
+</td>
+</tr>
+</table>
+</body>	
+</html>

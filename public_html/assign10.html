@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assign05.css"/>
+	<title>Snowboard Equipment Order Form</title>
+	<script src="assign05.js"></script>
+</head>
+
+<body onload="setFocus()">
+	<form id="shop" name="shopForm" class="center" method="POST" action="assign10.php" onsubmit="validateUser(); validateCard(); validatePhone();">	
+		<div style="text-align:center; padding-top:10px">Equipment Order Form</div><hr><br>
+		<table id="contain">
+			<tr>
+				<td>
+					<table id="userInfo">
+						<tr>
+							<td>
+								First Name:
+							</td>
+							<td>
+								<input type="text" name="firstName" id="FirstName" placeholder="enter first name" size="20" onfocus="this.select()" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Last Name:
+							</td>
+							<td>
+								<input type="text" name="lastName" id="LastName" placeholder="enter last name" size="20" onfocus="this.select()" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Address:
+							</td>
+							<td>
+								<textarea name="address" id="Address" rows="2" cols="21" onfocus="this.select()" required></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Cell Phone:
+							</td>
+							<td>
+								<input type="tel" name="phone" id="Phone" 
+								pattern ='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}' 
+								placeholder="xxx-xxx-xxxx" maxlength="13"  size="20" onfocus="this.select()" onchange="phoneValidate()" required>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<div style="text-align:right">
+						<img src="http://www.mycrunkspace.com/content/backgrounds/6f50c88910a26ab158d1f4cf3096fe87.gif" width="230.1px" height="273px">
+					</div>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<br>		
+		<table id="productTable">
+			<tr>
+				<th>
+					Product
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					Qty
+				</th>
+				<th>
+					Add to cart
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Snowboard
+				</td>
+				<td>
+					$399.99
+				</td>
+				<td>
+					<input type="text" name="qtyA" id="qtyA" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" name="addA" id="addA" onclick="calcTotal()">
+				</td>
+			</tr>
+			<tr class="alt">
+				<td>
+					Bindings
+				</td>
+				<td>
+					$229.99
+				</td>
+				<td>
+					<input type="text" name="qtyB" id="qtyB" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" name="addB" id="addB" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr>
+				<td>
+					Boots
+				</td>
+				<td>
+					$119.99
+				</td>
+				<td>
+					<input type="text" name="qtyC" id="qtyC" size="2" min="0" maxlength="2">
+				</td>
+				<td>
+					<input type="checkBox" name="addC" id="addC" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr class="alt">
+				<td>
+					Goggles
+				</td>
+				<td>
+					$199.99
+				</td>
+				<td>
+					<input type="text" name="qtyD" id="qtyD" size="2" min="0" maxlength="2" >
+				</td>
+				<td>
+					<input type="checkBox" name="addD" id="addD" onclick="calcTotal()">
+				</td>
+
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					Total:<input type="text" name="totalAll" id="totalAll" readonly="readonly" size="6">				
+				</td>
+			</tr>
+		</table>
+		<br><br>
+		
+		<table id="cardInput" align="center">
+			<tr>
+				<td>
+					<div style="text-align:left">
+						Payment Options:
+					</div>
+					<ul id="payOptions">
+						<li> <input type="radio" name="pay" id="payType" value="Visa">
+						<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8Qk3Ll-NA_Cr6j2ZuUUo28JLhQqrJExiU7TXLjejv4A0t5cOD"/>
+							Visa
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="MasterCard">
+						<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd6Bgs_TSI5_HuQgrYMvRt-3_3PfBGTtnsObE4qrNDeP6cK_3Q9Q"/>
+							MasterCard
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="AmericanExpress">
+						<img src="https://cdn0.iconfinder.com/data/icons/credit_card_icons/32/amex.png"/>
+							American Express
+						</li>
+						<li> <input type="radio" name="pay" id="payType" value="Discover">
+						<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTIXWxto7keiEImF-2DLh_PPQF0YiAHwCKjK-UpZJDtQ1oZPYnO"/>
+							Discover
+						</li>		
+					</ul>
+				</td>
+				<td>
+					<ul id="payInput">
+						<li>
+							Card Number: <input type="text" name="cardNum" id="CardNum" 
+							pattern='\d{4}[\s.-]?\d{4}[\s.-]?\d{4}[\s.-]?\d{4}' placeholder="xxxx-xxxx-xxxx-xxxx" 
+							maxlength="19"  size="20" onfocus="this.select()" onchange="cardValidate()" required>
+						</li>
+						<li>
+							Exp. Date: <input type="text" name="cardExp" id="CardExp" pattern='\d{4}' placeholder="mmyy" maxlength="4"  size="20" onfocus="this.select()" onchange="cardValidate()" required>
+						</li>
+						<li>
+							<input type="reset" value="Clear Order" onclick="setFocus()">
+						</li>
+						<li>
+							<input type="submit" value="Submit Order">
+						</li>
+					</td>
+				</tr>			
+			</table>
+
+		</form>
+		<br>
+		<br>
+
+		<div id="footer">
+			<footer>Published by: Tyler Scott - Computer Science and Engineering Student - BYUI - Contact Email:<a href="mailto:tybugman@hotmail.com"> tybugman@hotmail.com</a></footer>
+		</div>
+
+	</body>
+	</html>
